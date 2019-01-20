@@ -361,8 +361,16 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "api/#",
+    "page": "API",
+    "title": "API",
+    "category": "page",
+    "text": ""
+},
+
+{
     "location": "api/#Dagger.compute-Tuple{JuliaDB.DNDSparse}",
-    "page": "-",
+    "page": "API",
     "title": "Dagger.compute",
     "category": "method",
     "text": "compute(t::DNDSparse; allowoverlap, closed)\n\nComputes any delayed-evaluations in the DNDSparse. The computed data is left on the worker processes. Subsequent operations on the results will reuse the chunks.\n\nIf allowoverlap is false then the computed data is re-sorted if required to have no chunks with overlapping index ranges if necessary.\n\nIf closed is true then the computed data is re-sorted if required to have no chunks with overlapping OR continuous boundaries.\n\nSee also collect.\n\nwarning: Warning\ncompute(t) requires at least as much memory as the size of the result of the computing t. You usually don\'t need to do this for the whole dataset. If the result is expected to be big, try compute(save(t, \"output_dir\")) instead. See save for more.\n\n\n\n\n\n"
@@ -370,7 +378,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Dagger.distribute",
-    "page": "-",
+    "page": "API",
     "title": "Dagger.distribute",
     "category": "function",
     "text": "distribute(itable::NDSparse, nchunks::Int=nworkers())\n\nDistributes an NDSparse object into a DNDSparse of nchunks chunks of approximately equal size.\n\nReturns a DNDSparse.\n\n\n\n\n\n"
@@ -378,7 +386,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Dagger.distribute-Tuple{IndexedTable,Any}",
-    "page": "-",
+    "page": "API",
     "title": "Dagger.distribute",
     "category": "method",
     "text": "distribute(t::Table, chunks)\n\nDistribute a table in chunks pieces. Equivalent to table(t, chunks=chunks).\n\n\n\n\n\n"
@@ -386,7 +394,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Dagger.distribute-Union{Tuple{V}, Tuple{NDSparse{V,D,C,V1} where V1<:(AbstractArray{T,1} where T) where C<:(StructArray{T,1,C} where C<:NamedTuple where T) where D<:Tuple,AbstractArray}} where V",
-    "page": "-",
+    "page": "API",
     "title": "Dagger.distribute",
     "category": "method",
     "text": "distribute(itable::NDSparse, rowgroups::AbstractArray)\n\nDistributes an NDSparse object into a DNDSparse by splitting it up into chunks of rowgroups elements. rowgroups is a vector specifying the number of rows in the chunks.\n\nReturns a DNDSparse.\n\n\n\n\n\n"
@@ -394,7 +402,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Dagger.load-Tuple{AbstractString}",
-    "page": "-",
+    "page": "API",
     "title": "Dagger.load",
     "category": "method",
     "text": "load(dir::AbstractString)\n\nLoad a saved DNDSparse from dir directory. Data can be saved using the save function.\n\n\n\n\n\n"
@@ -402,7 +410,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Dagger.save-Tuple{Union{DIndexedTable, DNDSparse},AbstractString}",
-    "page": "-",
+    "page": "API",
     "title": "Dagger.save",
     "category": "method",
     "text": "save(t::Union{DNDSparse, DIndexedTable}, destdir::AbstractString)\n\nSaves a distributed dataset to disk in directory destdir. Saved data can be loaded with load.\n\n\n\n\n\n"
@@ -410,7 +418,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Dagger.save-Tuple{Union{IndexedTable, NDSparse},AbstractString}",
-    "page": "-",
+    "page": "API",
     "title": "Dagger.save",
     "category": "method",
     "text": "save(t::Union{NDSparse, IndexedTable}, dest::AbstractString)\n\nSave a dataset to disk as dest.  Saved data can be loaded with load.\n\n\n\n\n\n"
@@ -418,7 +426,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.convertdim-Union{Tuple{V}, Tuple{K}, Tuple{DNDSparse{K,V},Union{Int64, Symbol},Any}} where V where K",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.convertdim",
     "category": "method",
     "text": "convertdim(x::DNDSparse, d::DimName, xlate; agg::Function, name)\n\nApply function or dictionary xlate to each index in the specified dimension. If the mapping is many-to-one, agg is used to aggregate the results. name optionally specifies a name for the new dimension. xlate must be a monotonically increasing function.\n\nSee also reduce\n\n\n\n\n\n"
@@ -426,7 +434,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.leftjoin-Union{Tuple{V}, Tuple{K}, Tuple{Any,DNDSparse{K,V},DNDSparse}, Tuple{Any,DNDSparse{K,V},DNDSparse,Any}, Tuple{Any,DNDSparse{K,V},DNDSparse,Any,Any}} where V where K",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.leftjoin",
     "category": "method",
     "text": "leftjoin(left::DNDSparse, right::DNDSparse, [op::Function])\n\nKeeps only rows with indices in left. If rows of the same index are present in right, then they are combined using op. op by default picks the value from right.\n\n\n\n\n\n"
@@ -434,7 +442,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.naturaljoin-Union{Tuple{D2}, Tuple{D1}, Tuple{I2}, Tuple{I1}, Tuple{Any,DNDSparse{I1,D1},DNDSparse{I2,D2}}} where D2 where D1 where I2 where I1",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.naturaljoin",
     "category": "method",
     "text": "naturaljoin(op, left::DNDSparse, right::DNDSparse, ascolumns=false)\n\nReturns a new DNDSparse containing only rows where the indices are present both in left AND right tables. The data columns are concatenated. The data of the matching rows from left and right are combined using op. If op returns a tuple or NamedTuple, and ascolumns is set to true, the output table will contain the tuple elements as separate data columns instead as a single column of resultant tuples.\n\n\n\n\n\n"
@@ -442,7 +450,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.naturaljoin-Union{Tuple{D2}, Tuple{D1}, Tuple{J}, Tuple{I}, Tuple{DNDSparse{I,D1},DNDSparse{J,D2}}} where D2 where D1 where J where I",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.naturaljoin",
     "category": "method",
     "text": "naturaljoin(left::DNDSparse, right::DNDSparse, [op])\n\nReturns a new DNDSparse containing only rows where the indices are present both in left AND right tables. The data columns are concatenated.\n\n\n\n\n\n"
@@ -450,7 +458,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.reducedim_vec-Tuple{Any,JuliaDB.DNDSparse,Any}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.reducedim_vec",
     "category": "method",
     "text": "reducedim_vec(f::Function, t::DNDSparse, dims)\n\nLike reducedim, except uses a function mapping a vector of values to a scalar instead of a 2-argument scalar function.\n\nSee also reducedim.\n\n\n\n\n\n"
@@ -458,7 +466,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#JuliaDB.loadndsparse-Tuple{Union{String, AbstractArray{T,1} where T}}",
-    "page": "-",
+    "page": "API",
     "title": "JuliaDB.loadndsparse",
     "category": "method",
     "text": "loadndsparse(files::Union{AbstractVector,String}; <options>)\n\nLoad an NDSparse from CSV files.\n\nfiles is either a vector of file paths, or a directory name.\n\nOptions:\n\nindexcols::Vector – columns to use as indexed columns. (by default a 1:n implicit index is used.)\ndatacols::Vector – non-indexed columns. (defaults to all columns but indexed columns). Specify this to only load a subset of columns. In place of the name of a column, you can specify a tuple of names – this will treat any column with one of those names as the same column, but use the first name in the tuple. This is useful when the same column changes name between CSV files. (e.g. vendor_id and VendorId)\n\nAll other options are identical to those in loadtable\n\n\n\n\n\n"
@@ -466,7 +474,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#JuliaDB.loadtable-Tuple{Union{String, AbstractArray{T,1} where T}}",
-    "page": "-",
+    "page": "API",
     "title": "JuliaDB.loadtable",
     "category": "method",
     "text": "loadtable(files::Union{AbstractVector,String}; <options>)\n\nLoad a table from CSV files.\n\nfiles is either a vector of file paths, or a directory name.\n\nOptions:\n\noutput::AbstractString – directory name to write the table to. By default data is loaded directly to memory. Specifying this option will allow you to load data larger than the available memory.\nindexcols::Vector – columns to use as primary key columns. (defaults to [])\ndatacols::Vector – non-indexed columns. (defaults to all columns but indexed columns). Specify this to only load a subset of columns. In place of the name of a column, you can specify a tuple of names – this will treat any column with one of those names as the same column, but use the first name in the tuple. This is useful when the same column changes name between CSV files. (e.g. vendor_id and VendorId)\ndistributed::Bool – should the output dataset be loaded as a distributed table? If true, this will use all available worker processes to load the data. (defaults to true if workers are available, false if not)\nchunks::Int – number of chunks to create when loading distributed. (defaults to number of workers)\ndelim::Char – the delimiter character. (defaults to ,). Use spacedelim=true to split by spaces.\nspacedelim::Bool: parse space-delimited files. delim has no effect if true.\nquotechar::Char – quote character. (defaults to \")\nescapechar::Char – escape character. (defaults to \")\nfilenamecol::Union{Symbol, Pair} – create a column containing the file names from where each row came from. This argument gives a name to the column. By default, basename(name) of the name is kept, and \".csv\" suffix will be stripped. To provide a custom function to apply on the names, use a name => Function pair. By default, no file name column will be created.\nheader_exists::Bool – does header exist in the files? (defaults to true)\ncolnames::Vector{String} – specify column names for the files, use this with (header_exists=false, otherwise first row is discarded). By default column names are assumed to be present in the file.\nsamecols – a vector of tuples of strings where each tuple contains alternative names for the same column. For example, if some files have the name \"vendorid\" and others have the name \"VendorID\", pass `samecols=[(\"VendorID\", \"vendorid\")]`.\ncolparsers – either a vector or dictionary of data types or an AbstractToken object from TextParse package. By default, these are inferred automatically. See type_detect_rows option below.\ntype_detect_rows: number of rows to use to infer the initial colparsers defaults to 20.\nnastrings::Vector{String} – strings that are to be considered missing values. (defaults to TextParse.NA_STRINGS)\nskiplines_begin::Char – skip some lines in the beginning of each file. (doesn\'t skip by default)\nusecache::Bool: (vestigial)\n\n\n\n\n\n"
@@ -474,7 +482,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#JuliaDB.partitionplot",
-    "page": "-",
+    "page": "API",
     "title": "JuliaDB.partitionplot",
     "category": "function",
     "text": "partitionplot(table, y;    stat=Extrema(), nparts=100, by=nothing, dropmissing=false)\npartitionplot(table, x, y; stat=Extrema(), nparts=100, by=nothing, dropmissing=false)\n\nPlot a summary of variable y against x (1:length(y) if not specified).  Using nparts approximately-equal sections along the x-axis, the data in y over each section is  summarized by stat. \n\n\n\n\n\n"
@@ -482,7 +490,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#JuliaDB.rechunk",
-    "page": "-",
+    "page": "API",
     "title": "JuliaDB.rechunk",
     "category": "function",
     "text": "rechunk(t::Union{DNDSparse, DNDSparse}[, by[, select]]; <options>)\n\nReindex and sort a distributed dataset by keys selected by by.\n\nOptionally select specifies which non-indexed fields are kept. By default this is all fields not mentioned in by for Table and the value columns for NDSparse.\n\nOptions:\n\nchunks – how to distribute the data. This can be:\nAn integer – number of chunks to create\nAn vector of k integers – number of elements in each of the k chunks. sum(k) must be same as length(t)\nThe distribution of another array. i.e. vec.subdomains where vec is a distributed array.\nmerge::Function – a function which merges two sub-table or sub-ndsparse into one NDSparse. They may have overlaps in their indices.\nsplitters::AbstractVector – specify keys to split by. To create n chunks you would need to pass n-1 splitters and also the chunks=n option.\nchunks_sorted::Bool – are the chunks sorted locally? If true, this skips sorting or re-indexing them.\naffinities::Vector{<:Integer} – which processes (Int pid) should each output chunk be created on. If unspecified all workers are used.\nclosed::Bool – if true, the same key will not be present in multiple chunks (although sorted). true by default.\nnsamples::Integer – number of keys to randomly sample from each chunk to estimate splitters in the sorting process. (See samplesort). Defaults to 2000.\nbatchsize::Integer – how many chunks at a time from the input should be loaded into memory at any given time. This will essentially sort in batches of batchsize chunks.\n\n\n\n\n\n"
@@ -490,7 +498,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#JuliaDB.tracktime-Tuple{Any}",
-    "page": "-",
+    "page": "API",
     "title": "JuliaDB.tracktime",
     "category": "method",
     "text": "tracktime(f)\n\nTrack the time spent on different processes in different categories in running f.\n\n\n\n\n\n"
@@ -498,7 +506,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#JuliaDB.DIndexedTable",
-    "page": "-",
+    "page": "API",
     "title": "JuliaDB.DIndexedTable",
     "category": "type",
     "text": "A distributed table\n\n\n\n\n\n"
@@ -506,7 +514,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#JuliaDB.DNDSparse",
-    "page": "-",
+    "page": "API",
     "title": "JuliaDB.DNDSparse",
     "category": "type",
     "text": "DNDSparse{K,V} <: AbstractNDSparse\n\nA distributed NDSparse datastructure. Can be constructed by:\n\nndsparse from Julia objects\nloadndsparse from data on disk\ndistribute from an NDSparse object\n\n\n\n\n\n"
@@ -514,7 +522,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#JuliaDB.IndexSpace",
-    "page": "-",
+    "page": "API",
     "title": "JuliaDB.IndexSpace",
     "category": "type",
     "text": "IndexSpace(interval, boundingrect, nrows)\n\nMetadata about an chunk.\n\ninterval: An Interval object with the first and the last index tuples.\nboundingrect: An Interval object with the lowest and the highest indices as tuples.\nnrows: A Nullable{Int} of number of rows in the NDSparse, if knowable.\n\n\n\n\n\n"
@@ -522,7 +530,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#JuliaDB.Interval",
-    "page": "-",
+    "page": "API",
     "title": "JuliaDB.Interval",
     "category": "type",
     "text": "An interval type tailored specifically to store intervals of indices of an NDSparse object. Some of the operations on this like in or < may be controversial for a generic Interval type.\n\n\n\n\n\n"
@@ -530,7 +538,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Base.collect-Tuple{JuliaDB.DNDSparse}",
-    "page": "-",
+    "page": "API",
     "title": "Base.collect",
     "category": "method",
     "text": "collect(t::DNDSparse)\n\nGets distributed data in a DNDSparse t and merges it into NDSparse object\n\nwarning: Warning\ncollect(t) requires at least as much memory as the size of the result of the computing t. If the result is expected to be big, try compute(save(t, \"output_dir\")) instead. See save for more. This data can be loaded later using load.\n\n\n\n\n\n"
@@ -538,7 +546,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Base.getindex-Union{Tuple{K}, Tuple{DNDSparse{K,V} where V,Vararg{Any,N} where N}} where K",
-    "page": "-",
+    "page": "API",
     "title": "Base.getindex",
     "category": "method",
     "text": "t[idx...]\n\nReturns a DNDSparse containing only the elements of t where the given indices (idx) match. If idx has the same type as the index tuple of the t, then this is considered a scalar indexing (indexing of a single value). In this case the value itself is looked up and returned.\n\n\n\n\n\n"
@@ -546,7 +554,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Base.length-Tuple{JuliaDB.DNDSparse}",
-    "page": "-",
+    "page": "API",
     "title": "Base.length",
     "category": "method",
     "text": "The length of the DNDSparse if it can be computed. Will throw an error if not. You can get the length of such tables after calling compute on them.\n\n\n\n\n\n"
@@ -554,7 +562,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Base.map-Tuple{Any,JuliaDB.DNDSparse}",
-    "page": "-",
+    "page": "API",
     "title": "Base.map",
     "category": "method",
     "text": "map(f, t::DNDSparse)\n\nApplies a function f on every element in the data of table t.\n\n\n\n\n\n"
@@ -562,7 +570,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#JuliaDB.fromchunks-Tuple{AbstractArray,Vararg{Any,N} where N}",
-    "page": "-",
+    "page": "API",
     "title": "JuliaDB.fromchunks",
     "category": "method",
     "text": "fromchunks(cs)\n\nConstruct a distributed object from chunks. Calls fromchunks(T, cs) where T is the type of the data in the first chunk. Computes any thunks.\n\n\n\n\n\n"
@@ -570,7 +578,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#JuliaDB.mapchunks-Union{Tuple{V}, Tuple{K}, Tuple{Any,DNDSparse{K,V}}} where V where K",
-    "page": "-",
+    "page": "API",
     "title": "JuliaDB.mapchunks",
     "category": "method",
     "text": "mapchunks(f, t::DNDSparse; keeplengths=true)\n\nApplies a function to each chunk in t. Returns a new DNDSparse. If keeplength is false, this means that the lengths of the output chunks is unknown before compute. This function is used internally by many DNDSparse operations.\n\n\n\n\n\n"
@@ -578,7 +586,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.All",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.All",
     "category": "type",
     "text": "All(cols::Union{Symbol, Int}...)\n\nSelect the union of the selections in cols. If cols == (), select all columns.\n\nExamples\n\nt = table([1,1,2,2], [1,2,1,2], [1,2,3,4], [0, 0, 0, 0], names=[:a,:b,:c,:d])\nselect(t, All(:a, (:b, :c)))\nselect(t, All())\n\n\n\n\n\n"
@@ -586,7 +594,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.Between",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.Between",
     "category": "type",
     "text": "Between(first, last)\n\nSelect the columns between first and last.\n\nExamples\n\nt = table([1,1,2,2], [1,2,1,2], 1:4, \'a\':\'d\', names=[:a,:b,:c,:d])\nselect(t, Between(:b, :d))\n\n\n\n\n\n"
@@ -594,7 +602,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.ColDict-Tuple{Any}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.ColDict",
     "category": "method",
     "text": "d = ColDict(t)\n\nCreate a mutable dictionary of columns in t.\n\nTo get the immutable iterator of the same type as t call d[]\n\n\n\n\n\n"
@@ -602,7 +610,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.IndexedTable",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.IndexedTable",
     "category": "type",
     "text": "A tabular data structure that extends Columns.  Create an IndexedTable with the  table function.\n\n\n\n\n\n"
@@ -610,7 +618,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.Keys",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.Keys",
     "category": "type",
     "text": "Keys()\n\nSelect the primary keys.\n\nExamples\n\nt = table([1,1,2,2], [1,2,1,2], [1,2,3,4], names=[:a,:b,:c], pkey = (:a, :b))\nselect(t, Keys())\n\n\n\n\n\n"
@@ -618,7 +626,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.NDSparse-Tuple",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.NDSparse",
     "category": "method",
     "text": "NDSparse(columns...; names=Symbol[...], kwargs...)\n\nConstruct an NDSparse array from columns. The last argument is the data column, and the rest are index columns. The names keyword argument optionally specifies names for the index columns (dimensions).\n\n\n\n\n\n"
@@ -626,7 +634,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.Not",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.Not",
     "category": "type",
     "text": "Not(cols::Union{Symbol, Int}...)\n\nSelect the complementary of the selection in cols. Not can accept several arguments, in which case it returns the complementary of the union of the selections.\n\nExamples\n\nt = table([1,1,2,2], [1,2,1,2], [1,2,3,4], names=[:a,:b,:c], pkey = (:a, :b))\nselect(t, Not(:a))\nselect(t, Not(:a, (:a, :b)))\n\n\n\n\n\n"
@@ -634,7 +642,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.aggregate!-Tuple{Any,NDSparse}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.aggregate!",
     "category": "method",
     "text": "aggregate!(f::Function, arr::NDSparse)\n\nCombine adjacent rows with equal indices using the given 2-argument reduction function, in place.\n\n\n\n\n\n"
@@ -642,7 +650,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.asofjoin-Tuple{NDSparse,NDSparse}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.asofjoin",
     "category": "method",
     "text": "asofjoin(left::NDSparse, right::NDSparse)\n\nJoin rows from left with the \"most recent\" value from right.\n\nExample\n\nusing Dates\nakey1 = [\"A\", \"A\", \"B\", \"B\"]\nakey2 = [Date(2017,11,11), Date(2017,11,12), Date(2017,11,11), Date(2017,11,12)]\navals = collect(1:4)\n\nbkey1 = [\"A\", \"A\", \"B\", \"B\"]\nbkey2 = [Date(2017,11,12), Date(2017,11,13), Date(2017,11,10), Date(2017,11,13)]\nbvals = collect(5:8)\n\na = ndsparse((akey1, akey2), avals)\nb = ndsparse((bkey1, bkey2), bvals)\n\nasofjoin(a, b)\n\n\n\n\n\n"
@@ -650,7 +658,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.collect_columns-Tuple{Any}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.collect_columns",
     "category": "method",
     "text": "collect_columns(itr)\n\nCollect an iterable as a Columns object if it iterates Tuples or NamedTuples, as a normal Array otherwise.\n\nExamples\n\ns = [(1,2), (3,4)]\ncollect_columns(s)\n\ns2 = Iterators.filter(isodd, 1:8)\ncollect_columns(s2)\n\n\n\n\n\n"
@@ -658,7 +666,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.colnames",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.colnames",
     "category": "function",
     "text": "colnames(itr)\n\nReturns the names of the \"columns\" in itr.\n\nExamples:\n\ncolnames(1:3)\ncolnames(Columns([1,2,3], [3,4,5]))\ncolnames(table([1,2,3], [3,4,5]))\ncolnames(Columns(x=[1,2,3], y=[3,4,5]))\ncolnames(table([1,2,3], [3,4,5], names=[:x,:y]))\ncolnames(ndsparse(Columns(x=[1,2,3]), Columns(y=[3,4,5])))\ncolnames(ndsparse(Columns(x=[1,2,3]), [3,4,5]))\ncolnames(ndsparse(Columns(x=[1,2,3]), [3,4,5]))\ncolnames(ndsparse(Columns([1,2,3], [4,5,6]), Columns(x=[6,7,8])))\ncolnames(ndsparse(Columns(x=[1,2,3]), Columns([3,4,5],[6,7,8])))\n\n\n\n\n\n"
@@ -666,7 +674,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.columns",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.columns",
     "category": "function",
     "text": "columns(itr, select::Selection = All())\n\nSelect one or more columns from an iterable of rows as a tuple of vectors.\n\nselect specifies which columns to select. Refer to the select function for the  available selection options and syntax.\n\nitr can be NDSparse, Columns, AbstractVector, or their distributed counterparts.\n\nExamples\n\nt = table(1:2, 3:4; names = [:x, :y])\n\ncolumns(t)\ncolumns(t, :x)\ncolumns(t, (:x,))\ncolumns(t, (:y, :x => -))\n\n\n\n\n\n"
@@ -674,7 +682,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.columns-Tuple{Any,Any}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.columns",
     "category": "method",
     "text": "columns(itr, which)\n\nReturns a vector or a tuple of vectors from the iterator.\n\n\n\n\n\n"
@@ -682,7 +690,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.convertdim-Tuple{NDSparse,Union{Int64, Symbol},Any}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.convertdim",
     "category": "method",
     "text": "convertdim(x::NDSparse, d::DimName, xlate; agg::Function, vecagg::Function, name)\n\nApply function or dictionary xlate to each index in the specified dimension. If the mapping is many-to-one, agg or vecagg is used to aggregate the results. If agg is passed, it is used as a 2-argument reduction function over the data. If vecagg is passed, it is used as a vector-to-scalar function to aggregate the data. name optionally specifies a new name for the translated dimension.\n\n\n\n\n\n"
@@ -690,7 +698,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.dimlabels-Tuple{NDSparse}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.dimlabels",
     "category": "method",
     "text": "dimlabels(t::NDSparse)\n\nReturns an array of integers or symbols giving the labels for the dimensions of t. ndims(t) == length(dimlabels(t)).\n\n\n\n\n\n"
@@ -698,7 +706,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.dropmissing",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.dropmissing",
     "category": "function",
     "text": "dropmissing(t        )\ndropmissing(t, select)\n\nDrop rows of table t which contain missing values (either Missing or DataValue),  optionally only using the columns in select.  Column types will be converted to  non-missing types.  For example:\n\nVector{Union{Int, Missing}} -> Vector{Int}\nDataValueArray{Int} -> Vector{Int}\n\nExample\n\nt = table([0.1,0.5,missing,0.7], [2,missing,4,5], [missing,6,missing,7], names=[:t,:x,:y])\ndropmissing(t)\ndropmissing(t, (:t, :x))\n\n\n\n\n\n"
@@ -706,7 +714,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.flatten",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.flatten",
     "category": "function",
     "text": "flatten(t::Table, col=length(columns(t)))\n\nFlatten col column which may contain a vector of vectors while repeating the other fields. If column argument is not provided, default to last column.\n\nExamples:\n\nx = table([1,2], [[3,4], [5,6]], names=[:x, :y])\nflatten(x, 2)\n\nt1 = table([3,4],[5,6], names=[:a,:b])\nt2 = table([7,8], [9,10], names=[:a,:b])\nx = table([1,2], [t1, t2], names=[:x, :y]);\nflatten(x, :y)\n\n\n\n\n\n"
@@ -714,7 +722,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.flush!-Tuple{NDSparse}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.flush!",
     "category": "method",
     "text": "flush!(arr::NDSparse)\n\nCommit queued assignment operations, by sorting and merging the internal temporary buffer.\n\n\n\n\n\n"
@@ -722,7 +730,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.groupby",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.groupby",
     "category": "function",
     "text": "groupby(f, t, by = pkeynames(t); select, flatten=false)\n\nApply f to the select-ed columns (see select) in groups defined by the  unique values of by. \n\nIf f returns a vector, split it into multiple columns with flatten = true.\n\nExamples\n\nusing Statistics\n\nt=table([1,1,1,2,2,2], [1,1,2,2,1,1], [1,2,3,4,5,6], names=[:x,:y,:z])\n\ngroupby(mean, t, :x, select=:z)\ngroupby(identity, t, (:x, :y), select=:z)\ngroupby(mean, t, (:x, :y), select=:z)\n\ngroupby((mean, std, var), t, :y, select=:z)\ngroupby((q25=z->quantile(z, 0.25), q50=median, q75=z->quantile(z, 0.75)), t, :y, select=:z)\n\n# apply different aggregation functions to different columns\ngroupby((ymean = :y => mean, zmean = :z => mean), t, :x)\n\n\n\n\n\n"
@@ -730,7 +738,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.groupjoin-Tuple{Union{IndexedTable, NDSparse},Union{IndexedTable, NDSparse}}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.groupjoin",
     "category": "method",
     "text": "groupjoin(left, right; kw...)\ngroupjoin(f, left, right; kw...)\n\nJoin left and right creating groups of values with matching keys.\n\nFor keyword argument options, see join.\n\nExamples\n\nl = table([1,1,1,2], [1,2,2,1], [1,2,3,4], names=[:a,:b,:c], pkey=(:a, :b))\nr = table([0,1,1,2], [1,2,2,1], [1,2,3,4], names=[:a,:b,:d], pkey=(:a, :b))\n\ngroupjoin(l, r)\ngroupjoin(l, r; how = :left)\ngroupjoin(l, r; how = :outer)\ngroupjoin(l, r; how = :anti)\n\n\n\n\n\n"
@@ -738,7 +746,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.groupreduce",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.groupreduce",
     "category": "function",
     "text": "groupreduce(f, t, by = pkeynames(t); select)\n\nCalculate a reduce operation f over table t on groups defined by the values  in selection by.  The result is put in a table keyed by the unique by values.\n\nExamples\n\nt = table([1,1,1,2,2,2], 1:6, names=[:x, :y])\ngroupreduce(+,        t, :x; select = :y)\ngroupreduce((sum=+,), t, :x; select = :y)  # change output column name to :sum\n\nt2 = table([1,1,1,2,2,2], [1,1,2,2,3,3], 1:6, names = [:x, :y, :z])\ngroupreduce(+, t2, (:x, :y), select = :z)\n\n# different reducers for different columns\ngroupreduce((sumy = :y => +, sumz = :z => +), t2, :x)\n\n\n\n\n\n"
@@ -746,7 +754,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.insertcol-Tuple{Any,Integer,Any,Any}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.insertcol",
     "category": "method",
     "text": "insertcol(t, position::Integer, name, x)\n\nInsert a column x named name at position. Returns a new table.\n\nExample\n\nt = table([0.01, 0.05], [2,1], [3,4], names=[:t, :x, :y], pkey=:t)\ninsertcol(t, 2, :w, [0,1])\n\n\n\n\n\n"
@@ -754,7 +762,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.insertcolafter-NTuple{4,Any}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.insertcolafter",
     "category": "method",
     "text": "insertcolafter(t, after, name, col)\n\nInsert a column col named name after after. Returns a new table.\n\nExample\n\nt = table([0.01, 0.05], [2,1], [3,4], names=[:t, :x, :y], pkey=:t)\ninsertcolafter(t, :t, :w, [0,1])\n\n\n\n\n\n"
@@ -762,7 +770,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.insertcolbefore-NTuple{4,Any}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.insertcolbefore",
     "category": "method",
     "text": "insertcolbefore(t, before, name, col)\n\nInsert a column col named name before before. Returns a new table.\n\nExample\n\nt = table([0.01, 0.05], [2,1], [3,4], names=[:t, :x, :y], pkey=:t)\ninsertcolbefore(t, :x, :w, [0,1])\n\n\n\n\n\n"
@@ -770,7 +778,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.map_rows-Tuple{Any,Vararg{Any,N} where N}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.map_rows",
     "category": "method",
     "text": "map_rows(f, c...)\n\nTransform collection c by applying f to each element. For multiple collection arguments, apply f elementwise. Collect output as Columns if f returns Tuples or NamedTuples with constant fields, as Array otherwise.\n\nExamples\n\nmap_rows(i -> (exp = exp(i), log = log(i)), 1:5)\n\n\n\n\n\n"
@@ -778,7 +786,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.ncols",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.ncols",
     "category": "function",
     "text": "ncols(itr)\n\nReturns the number of columns in itr.\n\nExamples\n\nncols([1,2,3]) == 1\nncols(rows(([1,2,3],[4,5,6]))) == 2\n\n\n\n\n\n"
@@ -786,7 +794,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.ndsparse",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.ndsparse",
     "category": "function",
     "text": "ndsparse(keys, values; kw...)\n\nConstruct an NDSparse array with the given keys and values columns. On construction,  the keys and data are sorted in lexicographic order of the keys.\n\nKeyword Argument Options:\n\nagg = nothing – Function to aggregate values with duplicate keys.\npresorted = false – Are the key columns already sorted?\ncopy = true – Should the columns in keys and values be copied?\nchunks = nothing – Provide an integer to distribute data into chunks chunks.\nA good choice is nworkers() (after using Distributed)\nSee also: distribute\n\nExamples:\n\nx = ndsparse([\"a\",\"b\"], [3,4])\nkeys(x)\nvalues(x)\nx[\"a\"]\n\n# Dimensions are named if constructed with a named tuple of columns \nx = ndsparse((index = 1:10,), rand(10))\nx[1]\n\n# Multiple dimensions by passing a (named) tuple of columns\nx = ndsparse((x = 1:10, y = 1:2:20), rand(10))\nx[1, 1]\n\n# Value columns can also have names via named tuples\nx = ndsparse(1:10, (x=rand(10), y=rand(10)))\n\n\n\n\n\n"
@@ -794,7 +802,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.pkeynames-Tuple{IndexedTables.AbstractIndexedTable}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.pkeynames",
     "category": "method",
     "text": "pkeynames(t::Table)\n\nNames of the primary key columns in t.\n\nExamples\n\nt = table([1,2], [3,4]);\npkeynames(t)\n\nt = table([1,2], [3,4], pkey=1);\npkeynames(t)\n\nt = table([2,1],[1,3],[4,5], names=[:x,:y,:z], pkey=(1,2));\npkeynames(t)\n\n\n\n\n\n"
@@ -802,7 +810,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.pkeynames-Tuple{NDSparse}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.pkeynames",
     "category": "method",
     "text": "pkeynames(t::NDSparse)\n\nNames of the primary key columns in t.\n\nExample\n\nx = ndsparse([1,2],[3,4])\npkeynames(x)\n\nx = ndsparse((x=1:10, y=1:2:20), rand(10))\npkeynames(x)\n\n\n\n\n\n"
@@ -810,7 +818,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.pkeys-Tuple{IndexedTable}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.pkeys",
     "category": "method",
     "text": "pkeys(itr::IndexedTable)\n\nPrimary keys of the table. If Table doesn\'t have any designated primary key columns (constructed without pkey argument) then a default key of tuples (1,):(n,) is generated.\n\nExample\n\na = table([\"a\",\"b\"], [3,4]) # no pkey\npkeys(a)\n\na = table([\"a\",\"b\"], [3,4], pkey=1)\npkeys(a)\n\n\n\n\n\n"
@@ -818,7 +826,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.popcol-Tuple{Any,Vararg{Any,N} where N}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.popcol",
     "category": "method",
     "text": "popcol(t, cols...)\n\nRemove the column(s) cols from the table. Returns a new table.\n\nExample\n\nt = table([0.01, 0.05], [2,1], [3,4], names=[:t, :x, :y], pkey=:t)\npopcol(t, :x)\n\n\n\n\n\n"
@@ -826,7 +834,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.pushcol-Tuple{Any,Vararg{Any,N} where N}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.pushcol",
     "category": "method",
     "text": "pushcol(t, name, x)\n\nPush a column x to the end of the table. name is the name for the new column. Returns a new table.\n\npushcol(t, map::Pair...)\n\nPush many columns at a time.\n\nExample\n\nt = table([0.01, 0.05], [2,1], [3,4], names=[:t, :x, :y], pkey=:t)\npushcol(t, :z, [1//2, 3//4])\npushcol(t, :z => [1//2, 3//4])\n\n\n\n\n\n"
@@ -834,7 +842,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.reducedim_vec-Tuple{Any,NDSparse,Any}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.reducedim_vec",
     "category": "method",
     "text": "reducedim_vec(f::Function, arr::NDSparse, dims)\n\nLike reduce, except uses a function mapping a vector of values to a scalar instead of a 2-argument scalar function.\n\n\n\n\n\n"
@@ -842,7 +850,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.reindex",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.reindex",
     "category": "function",
     "text": "reindex(t::IndexedTable, by)\nreindex(t::IndexedTable, by, select)\n\nReindex table t with new primary key by, optionally keeping a subset of columns via select.  For NDSparse, use selectkeys.\n\nExample\n\nt = table([2,1],[1,3],[4,5], names=[:x,:y,:z], pkey=(1,2))\n\nt2 = reindex(t, (:y, :z))\n\npkeynames(t2)\n\n\n\n\n\n"
@@ -850,7 +858,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.renamecol-Tuple{Any,Vararg{Any,N} where N}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.renamecol",
     "category": "method",
     "text": "renamecol(t, col, newname)\n\nSet newname as the new name for column col in t. Returns a new table.\n\nrenamecol(t, map::Pair...)\n\nRename multiple columns at a time.\n\nExample\n\nt = table([0.01, 0.05], [2,1], names=[:t, :x])\nrenamecol(t, :t, :time)\n\n\n\n\n\n"
@@ -858,7 +866,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.rows",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.rows",
     "category": "function",
     "text": "rows(itr, select = All())\n\nSelect one or more fields from an iterable of rows as a vector of their values.  Refer to  the select function for selection options and syntax.\n\nitr can be NDSparse, Columns, AbstractVector, or their distributed counterparts.\n\nExamples\n\nt = table([1,2],[3,4], names=[:x,:y])\nrows(t)\nrows(t, :x)\nrows(t, (:x,))\nrows(t, (:y, :x => -))\n\n\n\n\n\n"
@@ -866,7 +874,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.select-Tuple{IndexedTables.AbstractIndexedTable,Any}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.select",
     "category": "method",
     "text": "select(t::Table, which::Selection)\n\nSelect all or a subset of columns, or a single column from the table.\n\nSelection is a type union of many types that can select from a table. It can be:\n\nInteger – returns the column at this position.\nSymbol – returns the column with this name.\nPair{Selection => Function} – selects and maps a function over the selection, returns the result.\nAbstractArray – returns the array itself. This must be the same length as the table.\nTuple of Selection – returns a table containing a column for every selector in the tuple. The tuple may also contain the type Pair{Symbol, Selection}, which the selection a name. The most useful form of this when introducing a new column.\nRegex – returns the columns with names that match the regular expression.\nType – returns columns with elements of the given type.\n\nExamples:\n\nt = table(1:10, randn(10), rand(Bool, 10); names = [:x, :y, :z])\n\n# select the :x vector\nselect(t, 1)\nselect(t, :x)\n\n# map a function to the :y vector\nselect(t, 2 => abs)\nselect(t, :y => x -> x > 0 ? x : -x)\n\n# select the table of :x and :z\nselect(t, (:x, :z))\nselect(t, r\"(x|z)\")\n\n# map a function to the table of :x and :y\nselect(t, (:x, :y) => row -> row[1] + row[2])\nselect(t, (1, :y) => row -> row.x + row.y)\n\n\n\n\n\n"
@@ -874,7 +882,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.selectkeys-Tuple{NDSparse,Any}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.selectkeys",
     "category": "method",
     "text": "selectkeys(x::NDSparse, sel)\n\nReturn an NDSparse with a subset of keys.\n\n\n\n\n\n"
@@ -882,7 +890,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.selectvalues-Tuple{NDSparse,Any}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.selectvalues",
     "category": "method",
     "text": "selectvalues(x::NDSparse, sel)\n\nReturn an NDSparse with a subset of values\n\n\n\n\n\n"
@@ -890,7 +898,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.setcol-Tuple{Any,Vararg{Any,N} where N}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.setcol",
     "category": "method",
     "text": "setcol(t::Table, col::Union{Symbol, Int}, x::Selection)\n\nSets a x as the column identified by col. Returns a new table.\n\nsetcol(t::Table, map::Pair{}...)\n\nSet many columns at a time.\n\nExamples:\n\nt = table([1,2], [3,4], names=[:x, :y])\n\n# change second column to [5,6]\nsetcol(t, 2 => [5,6])\nsetcol(t, :y , :y => x -> x + 2)\n\n# add [5,6] as column :z \nsetcol(t, :z => 5:6)\nsetcol(t, :z, :y => x -> x + 2)\n\n# replacing the primary key results in a re-sorted copy\nt = table([0.01, 0.05], [1,2], [3,4], names=[:t, :x, :y], pkey=:t)\nt2 = setcol(t, :t, [0.1,0.05])\n\n\n\n\n\n"
@@ -898,7 +906,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.stack-Union{Tuple{D}, Tuple{D}, Tuple{D,Any}} where D<:Union{IndexedTable, NDSparse}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.stack",
     "category": "method",
     "text": "stack(t, by = pkeynames(t); select = Not(by), variable = :variable, value = :value)`\n\nReshape a table from the wide to the long format. Columns in by are kept as indexing columns. Columns in select are stacked. In addition to the id columns, two additional columns labeled  variable and value are added, containing the column identifier and the stacked columns. See also unstack.\n\nExamples\n\nt = table(1:4, names = [:x], pkey=:x)\nt = pushcol(t, :xsquare, :x => x -> x^2)\nt = pushcol(t, :xcube  , :x => x -> x^3)\n\nstack(t)\n\n\n\n\n\n"
@@ -906,7 +914,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.summarize",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.summarize",
     "category": "function",
     "text": "summarize(f, t, by = pkeynames(t); select = Not(by), stack = false, variable = :variable)\n\nApply summary functions column-wise to a table. Return a NamedTuple in the non-grouped case and a table in the grouped case. Use stack=true to stack results of the same summary function  for different columns.\n\nExamples\n\nusing Statistics\n\nt = table([1, 2, 3], [1, 1, 1], names = [:x, :y])\n\nsummarize((mean, std), t)\nsummarize((m = mean, s = std), t)\nsummarize(mean, t; stack=true)\nsummarize((mean, std), t; select = :y)\n\n\n\n\n\n"
@@ -914,7 +922,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.table",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.table",
     "category": "function",
     "text": "table(cols; kw...)\n\nCreate a table from a (named) tuple of AbstractVectors.\n\ntable(cols::AbstractVector...; names::Vector{Symbol}, kw...)\n\nCreate a table from the provided cols, optionally with names.\n\ntable(cols::Columns; kw...)\n\nConstruct a table from a vector of tuples. See rows and Columns.\n\ntable(t::Union{IndexedTable, NDSparse}; kw...)\n\nCopy a Table or NDSparse to create a new table. The same primary keys as the input are used.\n\ntable(x; kw...)\n\nCreate an IndexedTable from any object x that follows the Tables.jl interface.\n\nKeyword Argument Options:\n\npkey: select columns to sort by and be the primary key.\npresorted = false: is the data pre-sorted by primary key columns? \ncopy = true: creates a copy of the input vectors if true. Irrelevant if chunks is specified.\nchunks::Integer: distribute the table.  Options are:\nInt – (number of chunks) a safe bet is nworkers() after using Distributed.\nVector{Int} – Number of elements in each of the length(chunks) chunks.\n\nExamples:\n\ntable(rand(10), rand(10), names = [:x, :y], pkey = :x)\n\ntable(rand(Bool, 20), rand(20), rand(20), pkey = [1,2])\n\ntable((x = 1:10, y = randn(10)))\n\ntable([(1,2), (3,4)])\n\n\n\n\n\n"
@@ -922,7 +930,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.unstack-Union{Tuple{D}, Tuple{D}, Tuple{D,Any}} where D<:Union{IndexedTable, NDSparse}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.unstack",
     "category": "method",
     "text": "unstack(t, by = pkeynames(t); variable = :variable, value = :value)\n\nReshape a table from the long to the wide format. Columns in by are kept as indexing columns. Keyword arguments variable and value denote which column contains the column identifier and which the corresponding values.  See also stack.\n\nExamples\n\nt = table(1:4, [1, 4, 9, 16], [1, 8, 27, 64], names = [:x, :xsquare, :xcube], pkey = :x);\n\nlong = stack(t)\n\nunstack(long)\n\n\n\n\n\n"
@@ -930,7 +938,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.update!-Union{Tuple{N}, Tuple{Union{Function, Type},NDSparse,Vararg{Any,N}}} where N",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.update!",
     "category": "method",
     "text": "update!(f::Function, arr::NDSparse, indices...)\n\nReplace data values x with f(x) at each location that matches the given indices.\n\n\n\n\n\n"
@@ -938,7 +946,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.where-Union{Tuple{N}, Tuple{NDSparse,Vararg{Any,N}}} where N",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.where",
     "category": "method",
     "text": "where(arr::NDSparse, indices...)\n\nReturns an iterator over data items where the given indices match. Accepts the same index arguments as getindex.\n\n\n\n\n\n"
@@ -946,7 +954,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.Perm",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.Perm",
     "category": "type",
     "text": "A permutation\n\nFields:\n\ncolumns: The columns being indexed as a vector of integers (column numbers)\nperm: the permutation - an array or iterator which has the sorted permutation\n\n\n\n\n\n"
@@ -954,7 +962,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Base.Broadcast.broadcast-Tuple{Function,NDSparse,NDSparse}",
-    "page": "-",
+    "page": "API",
     "title": "Base.Broadcast.broadcast",
     "category": "method",
     "text": "broadcast(f, A::NDSparse, B::NDSparse; dimmap::Tuple{Vararg{Int}})\nA .* B\n\nCompute an inner join of A and B using function f, where the dimensions of B are a subset of the dimensions of A. Values from B are repeated over the extra dimensions.\n\ndimmap optionally specifies how dimensions of A correspond to dimensions of B. It is a tuple where dimmap[i]==j means the ith dimension of A matches the jth dimension of B. Extra dimensions that do not match any dimensions of j should have dimmap[i]==0.\n\nIf dimmap is not specified, it is determined automatically using index column names and types.\n\nExample\n\na = ndsparse(([1,1,2,2], [1,2,1,2]), [1,2,3,4])\nb = ndsparse([1,2], [1/1, 1/2])\nbroadcast(*, a, b)\n\ndimmap maps dimensions that should be broadcasted:\n\nbroadcast(*, a, b, dimmap=(0,1))\n\n\n\n\n\n"
@@ -962,7 +970,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Base.convert-Tuple{Type{IndexedTable},Any,Any}",
-    "page": "-",
+    "page": "API",
     "title": "Base.convert",
     "category": "method",
     "text": "convert(IndexedTable, pkeys, vals; kwargs...)\n\nConstruct a table with pkeys as primary keys and vals as corresponding non-indexed items. keyword arguments will be forwarded to table constructor.\n\nExample\n\nconvert(IndexedTable, Columns(x=[1,2],y=[3,4]), Columns(z=[1,2]), presorted=true)\n\n\n\n\n\n"
@@ -970,7 +978,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Base.filter-Tuple{Any,Union{IndexedTable, NDSparse}}",
-    "page": "-",
+    "page": "API",
     "title": "Base.filter",
     "category": "method",
     "text": "filter(f, t::Union{IndexedTable, NDSparse}; select)\n\nIterate over t and Return the rows for which f(row) returns true.  select determines  the rows that are given as arguments to f (see select).\n\nf can also be a tuple of column => function pairs.  Returned rows will be those for which all conditions are true.\n\nExample\n\n# filter iterates over ROWS of a IndexedTable\nt = table(rand(100), rand(100), rand(100), names = [:x, :y, :z])\nfilter(r -> r.x + r.y + r.z < 1, t)\n\n# filter iterates over VALUES of an NDSparse\nx = ndsparse(1:100, randn(100))\nfilter(val -> val > 0, x)\n\n\n\n\n\n"
@@ -978,7 +986,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Base.join-Tuple{Any,Union{IndexedTable, NDSparse},Union{IndexedTable, NDSparse}}",
-    "page": "-",
+    "page": "API",
     "title": "Base.join",
     "category": "method",
     "text": "join(left, right; kw...)\njoin(f, left, right; kw...)\n\nJoin tables left and right.\n\nIf a function f(leftrow, rightrow) is provided, the returned table will have a single  output column.  See the Examples below.\n\nIf the same key occurs multiple times in either table, each left row will get matched  with each right row, resulting in n_occurrences_left * n_occurrences_right output rows.\n\nOptions (keyword arguments)\n\nhow = :inner \nJoin method to use. Described below.\nlkey = pkeys(left) \nFields from left to match on (see pkeys).\nrkey = pkeys(right) \nFields from right to match on.\nlselect = Not(lkey) \nOutput columns from left (see Not)\nrselect = Not(rkey)\nOutput columns from right.\nmissingtype = Missing \nType of missing values that can be created through :left and :outer joins.\nOther supported option is DataValue.\n\nJoin methods (how = :inner)\n\n:inner – rows with matching keys in both tables\n:left – all rows from left, plus matched rows from right (missing values can occur)\n:outer – all rows from both tables (missing values can occur)\n:anti – rows in left WITHOUT matching keys in right\n\nExamples\n\na = table((x = 1:10,   y = rand(10)), pkey = :x)\nb = table((x = 1:2:20, z = rand(10)), pkey = :x)\n\njoin(a, b; how = :inner)\njoin(a, b; how = :left)\njoin(a, b; how = :outer)\njoin(a, b; how = :anti)\n\njoin((l, r) -> l.y + r.z, a, b)\n\n\n\n\n\n"
@@ -986,7 +994,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Base.keys-Tuple{NDSparse,Vararg{Any,N} where N}",
-    "page": "-",
+    "page": "API",
     "title": "Base.keys",
     "category": "method",
     "text": "keys(x::NDSparse[, select::Selection])\n\nGet the keys of an NDSparse object. Same as rows but acts only on the index columns of the NDSparse.\n\n\n\n\n\n"
@@ -994,7 +1002,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Base.map-Tuple{Any,IndexedTables.AbstractIndexedTable}",
-    "page": "-",
+    "page": "API",
     "title": "Base.map",
     "category": "method",
     "text": "map(f, t::IndexedTable; select)\n\nApply f to every item in t selected by select (see also the select function).   Returns a new table if f returns a tuple or named tuple.  If not, returns a vector.\n\nExamples\n\nt = table([1,2], [3,4], names=[:x, :y])\n\npolar = map(p -> (r = hypot(p.x, p.y), θ = atan(p.y, p.x)), t)\n\nback2t = map(p -> (x = p.r * cos(p.θ), y = p.r * sin(p.θ)), polar)\n\n\n\n\n\n"
@@ -1002,7 +1010,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Base.map-Tuple{Any,NDSparse}",
-    "page": "-",
+    "page": "API",
     "title": "Base.map",
     "category": "method",
     "text": "map(f, x::NDSparse; select = values(x))\n\nApply f to every value of select selected from x (see select).\n\nApply f to every data value in x. select selects fields passed to f. By default, the data values are selected.\n\nIf the return value of f is a tuple or named tuple the result will contain many data columns.\n\nExamples\n\nx = ndsparse((t=[0.01, 0.05],), (x=[1,2], y=[3,4]))\n\npolar = map(row -> (r = hypot(row.x, row.y), θ = atan(row.y, row.x)), x)\n\nback2x = map(row -> (x = row.r * cos(row.θ), y = row.r * sin(row.θ)), polar)\n\n\n\n\n\n"
@@ -1010,7 +1018,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Base.merge-Tuple{Union{IndexedTable, NDSparse},Any}",
-    "page": "-",
+    "page": "API",
     "title": "Base.merge",
     "category": "method",
     "text": "merge(a::IndexedTable, b::IndexedTable; pkey)\n\nMerge rows of a with rows of b and remain ordered by the primary key(s).  a and b must have the same column names.\n\nmerge(a::NDSparse, a::NDSparse; agg)\n\nMerge rows of a with rows of b.  To keep unique keys, the value from b takes priority. A provided function agg will aggregate values from a and b that have the same key(s).\n\nExample:\n\na = table((x = 1:5, y = rand(5)); pkey = :x)\nb = table((x = 6:10, y = rand(5)); pkey = :x)\nmerge(a, b)\n\na = ndsparse([1,3,5], [1,2,3])\nb = ndsparse([2,3,4], [4,5,6])\nmerge(a, b)\nmerge(a, b; agg = (x,y) -> x)\n\n\n\n\n\n"
@@ -1018,7 +1026,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Base.pairs-Union{Tuple{N}, Tuple{NDSparse,Vararg{Any,N}}} where N",
-    "page": "-",
+    "page": "API",
     "title": "Base.pairs",
     "category": "method",
     "text": "pairs(arr::NDSparse, indices...)\n\nSimilar to where, but returns an iterator giving index=>value pairs. index will be a tuple.\n\n\n\n\n\n"
@@ -1026,7 +1034,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Base.reduce-Tuple{Any,IndexedTable}",
-    "page": "-",
+    "page": "API",
     "title": "Base.reduce",
     "category": "method",
     "text": "reduce(f, t::IndexedTable; select::Selection)\n\nApply reducer function f pair-wise to the selection select in t.  The reducer f  can be:\n\nA function\nAn OnlineStat\nA (named) tuple of functions and/or OnlineStats\nA (named) tuple of (selector => function) or (selector => OnlineStat) pairs\n\nExamples\n\nt = table(1:5, 6:10, names = [:t, :x])\n\nreduce(+, t, select = :t)\nreduce((a, b) -> (t = a.t + b.t, x = a.x + b.x), t)\n\nusing OnlineStats\nreduce(Mean(), t, select = :t)\nreduce((Mean(), Variance()), t, select = :t)\n\ny = reduce((min, max), t, select=:x)\nreduce((sum = +, prod = *), t, select=:x)\n\n# combining reduction and selection\nreduce((xsum = :x => +, negtsum = (:t => -) => +), t)\n\n\n\n\n\n"
@@ -1034,7 +1042,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Base.reduce-Tuple{Any,NDSparse}",
-    "page": "-",
+    "page": "API",
     "title": "Base.reduce",
     "category": "method",
     "text": "reduce(f, x::NDSparse; dims)\n\nDrop the dims dimension(s) and aggregate values with f.\n\nx = ndsparse((x=[1,1,1,2,2,2],\n              y=[1,2,2,1,2,2],\n              z=[1,1,2,1,1,2]), [1,2,3,4,5,6])\n              \nreduce(+, x; dims=1)\nreduce(+, x; dims=(1,3))\n\n\n\n\n\n"
@@ -1042,7 +1050,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Base.sort!-Tuple{IndexedTable,Vararg{Any,N} where N}",
-    "page": "-",
+    "page": "API",
     "title": "Base.sort!",
     "category": "method",
     "text": "sort!(t    ; kw...)\nsort!(t, by; kw...)\n\nSort rows of t by by in place. All of Base.sort keyword arguments can be used.\n\nExamples\n\nt = table([1,1,1,2,2,2], [1,1,2,2,1,1], [1,2,3,4,5,6], names=[:x,:y,:z]);\nsort!(t, :z, rev = true)\nt\n\n\n\n\n\n"
@@ -1050,7 +1058,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Base.sort-Tuple{IndexedTable,Vararg{Any,N} where N}",
-    "page": "-",
+    "page": "API",
     "title": "Base.sort",
     "category": "method",
     "text": "sort(t    ; select, kw...)\nsort(t, by; select, kw...)\n\nSort rows by by. All of Base.sort keyword arguments can be used.\n\nExamples\n\nt=table([1,1,1,2,2,2], [1,1,2,2,1,1], [1,2,3,4,5,6],\nsort(t, :z; select = (:y, :z), rev = true)\n\n\n\n\n\n"
@@ -1058,7 +1066,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#Base.values-Tuple{NDSparse,Vararg{Any,N} where N}",
-    "page": "-",
+    "page": "API",
     "title": "Base.values",
     "category": "method",
     "text": "values(x::NDSparse[, select::Selection])\n\nGet the values of an NDSparse object. Same as rows but acts only on the value columns of the NDSparse.\n\n\n\n\n\n"
@@ -1066,7 +1074,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.arrayof-Tuple{Any}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.arrayof",
     "category": "method",
     "text": "arrayof(T)\n\nReturns the type of Columns or Vector suitable to store values of type T. Nested tuples beget nested Columns.\n\n\n\n\n\n"
@@ -1074,7 +1082,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.best_perm_estimate-Tuple{Any,Any}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.best_perm_estimate",
     "category": "method",
     "text": "Returns: (n, perm) where n is the number of columns in the beginning of cols, perm is one possible permutation of those first n columns.\n\n\n\n\n\n"
@@ -1082,7 +1090,7 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.convertmissing-Tuple{IndexedTable,Type{Missing}}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.convertmissing",
     "category": "method",
     "text": "convertmissing(tbl, missingtype)\n\nConvert the missing value representation in tbl to be of type missingtype.\n\nExample\n\nusing IndexedTables, DataValues\nt = table([1,2,missing], [1,missing,3])\nIndexedTables.convertmissing(t, DataValue)\n\n\n\n\n\n"
@@ -1090,17 +1098,17 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "api/#IndexedTables.excludecols-Tuple{Any,Any}",
-    "page": "-",
+    "page": "API",
     "title": "IndexedTables.excludecols",
     "category": "method",
     "text": "excludecols(itr, cols) -> Tuple of Int\n\nNames of all columns in itr except cols. itr can be any of Table, NDSparse, Columns, or AbstractVector\n\nExamples\n\nusing IndexedTables: excludecols\n\nt = table([2,1],[1,3],[4,5], names=[:x,:y,:z], pkey=(1,2))\n\nexcludecols(t, (:x,))\nexcludecols(t, (2,))\nexcludecols(t, pkeynames(t))\nexcludecols([1,2,3], (1,))\n\n\n\n\n\n"
 },
 
 {
-    "location": "api/#",
-    "page": "-",
-    "title": "-",
-    "category": "page",
+    "location": "api/#API-1",
+    "page": "API",
+    "title": "API",
+    "category": "section",
     "text": "Modules = [JuliaDB, IndexedTables]"
 },
 
