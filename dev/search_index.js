@@ -41,6 +41,86 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "basics/#",
+    "page": "Basics",
+    "title": "Basics",
+    "category": "page",
+    "text": "using JuliaDB"
+},
+
+{
+    "location": "basics/#Basics-1",
+    "page": "Basics",
+    "title": "Basics",
+    "category": "section",
+    "text": "JuliaDB offers two main data structures as well as distributed counterparts.  This allows you to easily scale up an analysis, as operations that work on non-distributed tables  either work out of the box or are easy to transition for distributed tables.Here is a high level overview of tables in JuliaDB:Tables store data in columns.\nTables are typed.\nChanging a table in some way therefore requires returning a new table (underlying data is not copied).\nJuliaDB has few mutating operations because a new table is necessary in most cases."
+},
+
+{
+    "location": "basics/#[IndexedTable](@ref)-1",
+    "page": "Basics",
+    "title": "IndexedTable",
+    "category": "section",
+    "text": "An IndexedTable is wrapper around a (named) tuple of Vectors, but it behaves like a Vector of (named) tuples.  You can choose to sort the table by any number of primary  keys (in this case columns :x and :y).An IndexedTable is created with data in Julia via the table function or with  data on disk via the loadtable function.x = 1:10\ny = \'a\':\'j\'\nz = randn(10)\nt = table((x=x, y=y, z=z); pkey = [:x, :y])\nt[1]\nt[end]"
+},
+
+{
+    "location": "basics/#[NDSparse](@ref)-1",
+    "page": "Basics",
+    "title": "NDSparse",
+    "category": "section",
+    "text": "An NDSparse has a similar underlying structure to IndexedTable, but it behaves like a sparse array with arbitrary indices.  The keys of an NDSparse are sorted, much like the primary keys of an IndexedTable.An NDSparse is created with data in Julia via the ndsparse function or with  data on disk via the loadndsparse function.nd = ndsparse((x=x, y=y), (z=z,))\nnd[1, \'a\']\nnd[10, \'j\'].z\nnd[1, :]"
+},
+
+{
+    "location": "basics/#Selectors-1",
+    "page": "Basics",
+    "title": "Selectors",
+    "category": "section",
+    "text": "JuliaDB has a variety of ways to select columns.  These selection methods get used across many JuliaDB\'s functions: select, reduce, groupreduce,  groupby, join, pushcol, reindex, and more.To demonstrate selection, we\'ll use the select function.  A selection can be any of the following types:Integer – returns the column at this position.\nSymbol – returns the column with this name.\nPair{Selection => Function} – selects and maps a function over the selection, returns the result.\nAbstractArray – returns the array itself. This must be the same length as the table.\nTuple of Selection – returns a table containing a column for every selector in the tuple.\nRegex – returns the columns with names that match the regular expression.\nType – returns columns with elements of the given type.\nNot(Selection) – returns columns that are not included in the selection.t = table(1:10, randn(10), rand(Bool, 10); names = [:x, :y, :z])\n\n# select the :x vector\nselect(t, 1)\nselect(t, :x)\n\n# map a function to the :y vector\nselect(t, 2 => abs)\nselect(t, :y => x -> x > 0 ? x : -x)\n\n# select the table of :x and :z\nselect(t, (:x, :z))\nselect(t, r\"(x|z)\")\n\n# map a function to the table of :x and :y\nselect(t, (:x, :y) => row -> row[1] + row[2])\nselect(t, (1, :y) => row -> row.x + row.y)\n\n# select columns that are subtypes of Integer\nselect(t, Integer)\n\n# select columns that are not subtypes of Integer\nselect(t, Not(Integer))"
+},
+
+{
+    "location": "basics/#Loading-and-Saving-1",
+    "page": "Basics",
+    "title": "Loading and Saving",
+    "category": "section",
+    "text": "using Pkg\nPkg.add(\"RDatasets\")"
+},
+
+{
+    "location": "basics/#Loading-Data-From-CSV-1",
+    "page": "Basics",
+    "title": "Loading Data From CSV",
+    "category": "section",
+    "text": "Loading a CSV file (or multiple files) into one of JuliaDB\'s tabular data structures is accomplished via the loadtable and loadndsparse functions.  using JuliaDB, DelimitedFiles\n\nx = rand(10, 2)\nwritedlm(\"temp.csv\", x, \',\')\n\nt = loadtable(\"temp.csv\")note: Note\nloadtable and loadndsparse use Missing to represent missing values.  To load a CSV that instead uses DataValue, see CSVFiles.jl.  For more information on missing value representations, see Missing Values."
+},
+
+{
+    "location": "basics/#Converting-From-Other-Data-Structures-1",
+    "page": "Basics",
+    "title": "Converting From Other Data Structures",
+    "category": "section",
+    "text": "using JuliaDB, RDatasets\n\ndf = dataset(\"datasets\", \"iris\")  # load data as DataFrame\n\ntable(df)  # Convert DataFrame to IndexedTable"
+},
+
+{
+    "location": "basics/#Save-Table-into-Binary-Format-1",
+    "page": "Basics",
+    "title": "Save Table into Binary Format",
+    "category": "section",
+    "text": "A table can be saved to disk (for fast, efficient reloading) via the save function."
+},
+
+{
+    "location": "basics/#Load-Table-from-Binary-Format-1",
+    "page": "Basics",
+    "title": "Load Table from Binary Format",
+    "category": "section",
+    "text": "Tables that have been save-ed can be loaded efficiently via load."
+},
+
+{
     "location": "tutorial/#",
     "page": "Tutorial",
     "title": "Tutorial",
@@ -177,86 +257,6 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "basics/#",
-    "page": "Basics",
-    "title": "Basics",
-    "category": "page",
-    "text": "using JuliaDB"
-},
-
-{
-    "location": "basics/#Basics-1",
-    "page": "Basics",
-    "title": "Basics",
-    "category": "section",
-    "text": "JuliaDB offers two main data structures as well as distributed counterparts.  This allows you to easily scale up an analysis, as operations that work on non-distributed tables  either work out of the box or are easy to transition for distributed tables.Here is a high level overview of tables in JuliaDB:Tables store data in columns.\nTables are typed.\nChanging a table in some way therefore requires returning a new table (underlying data is not copied).\nJuliaDB has few mutating operations because a new table is necessary in most cases."
-},
-
-{
-    "location": "basics/#[IndexedTable](@ref)-1",
-    "page": "Basics",
-    "title": "IndexedTable",
-    "category": "section",
-    "text": "An IndexedTable is wrapper around a (named) tuple of Vectors, but it behaves like a Vector of (named) tuples.  You can choose to sort the table by any number of primary  keys (in this case columns :x and :y).An IndexedTable is created with data in Julia via the table function or with  data on disk via the loadtable function.x = 1:10\ny = \'a\':\'j\'\nz = randn(10)\nt = table((x=x, y=y, z=z); pkey = [:x, :y])\nt[1]\nt[end]"
-},
-
-{
-    "location": "basics/#[NDSparse](@ref)-1",
-    "page": "Basics",
-    "title": "NDSparse",
-    "category": "section",
-    "text": "An NDSparse has a similar underlying structure to IndexedTable, but it behaves like a sparse array with arbitrary indices.  The keys of an NDSparse are sorted, much like the primary keys of an IndexedTable.An NDSparse is created with data in Julia via the ndsparse function or with  data on disk via the loadndsparse function.nd = ndsparse((x=x, y=y), (z=z,))\nnd[1, \'a\']\nnd[10, \'j\'].z\nnd[1, :]"
-},
-
-{
-    "location": "basics/#Selectors-1",
-    "page": "Basics",
-    "title": "Selectors",
-    "category": "section",
-    "text": "JuliaDB has a variety of ways to select columns.  These selection methods get used across many JuliaDB\'s functions: select, reduce, groupreduce,  groupby, join, pushcol, reindex, and more.To demonstrate selection, we\'ll use the select function.  A selection can be any of the following types:Integer – returns the column at this position.\nSymbol – returns the column with this name.\nPair{Selection => Function} – selects and maps a function over the selection, returns the result.\nAbstractArray – returns the array itself. This must be the same length as the table.\nTuple of Selection – returns a table containing a column for every selector in the tuple.\nRegex – returns the columns with names that match the regular expression.\nType – returns columns with elements of the given type.\nNot(Selection) – returns columns that are not included in the selection.t = table(1:10, randn(10), rand(Bool, 10); names = [:x, :y, :z])\n\n# select the :x vector\nselect(t, 1)\nselect(t, :x)\n\n# map a function to the :y vector\nselect(t, 2 => abs)\nselect(t, :y => x -> x > 0 ? x : -x)\n\n# select the table of :x and :z\nselect(t, (:x, :z))\nselect(t, r\"(x|z)\")\n\n# map a function to the table of :x and :y\nselect(t, (:x, :y) => row -> row[1] + row[2])\nselect(t, (1, :y) => row -> row.x + row.y)\n\n# select columns that are subtypes of Integer\nselect(t, Integer)\n\n# select columns that are not subtypes of Integer\nselect(t, Not(Integer))"
-},
-
-{
-    "location": "basics/#Loading-and-Saving-1",
-    "page": "Basics",
-    "title": "Loading and Saving",
-    "category": "section",
-    "text": "using Pkg\nPkg.add(\"RDatasets\")"
-},
-
-{
-    "location": "basics/#Loading-Data-From-CSV-1",
-    "page": "Basics",
-    "title": "Loading Data From CSV",
-    "category": "section",
-    "text": "Loading a CSV file (or multiple files) into one of JuliaDB\'s tabular data structures is accomplished via the loadtable and loadndsparse functions.  using JuliaDB, DelimitedFiles\n\nx = rand(10, 2)\nwritedlm(\"temp.csv\", x, \',\')\n\nt = loadtable(\"temp.csv\")note: Note\nloadtable and loadndsparse use Missing to represent missing values.  To load a CSV that instead uses DataValue, see CSVFiles.jl.  For more information on missing value representations, see Missing Values."
-},
-
-{
-    "location": "basics/#Converting-From-Other-Data-Structures-1",
-    "page": "Basics",
-    "title": "Converting From Other Data Structures",
-    "category": "section",
-    "text": "using JuliaDB, RDatasets\n\ndf = dataset(\"datasets\", \"iris\")  # load data as DataFrame\n\ntable(df)  # Convert DataFrame to IndexedTable"
-},
-
-{
-    "location": "basics/#Save-Table-into-Binary-Format-1",
-    "page": "Basics",
-    "title": "Save Table into Binary Format",
-    "category": "section",
-    "text": "A table can be saved to disk (for fast, efficient reloading) via the save function."
-},
-
-{
-    "location": "basics/#Load-Table-from-Binary-Format-1",
-    "page": "Basics",
-    "title": "Load Table from Binary Format",
-    "category": "section",
-    "text": "Tables that have been save-ed can be loaded efficiently via load."
-},
-
-{
     "location": "onlinestats/#",
     "page": "OnlineStats Integration",
     "title": "OnlineStats Integration",
@@ -277,7 +277,15 @@ var documenterSearchIndex = {"docs": [
     "page": "OnlineStats Integration",
     "title": "Basics",
     "category": "section",
-    "text": "OnlineStats\' objects can be updated with more data and also merged together.  The image below demonstrates what goes on under the hood in JuliaDB to compute a statistic s in parallel.(Image: )OnlineStats integration is available via the reduce and groupreduce functions.  An OnlineStat acts differently from a normal reducer.Normal reducer f:  val = f(val, row)\nOnlineStat reducer o: fit!(o, row)using JuliaDB, OnlineStats\nt = table(1:100, rand(Bool, 100), randn(100));\nreduce(Mean(), t; select = 3)\ngroupreduce(Mean(), t, 2; select=3)"
+    "text": "OnlineStats\' objects can be updated with more data and also merged together.  The image below demonstrates what goes on under the hood in JuliaDB to compute a statistic s in parallel.<img src=\"https://user-images.githubusercontent.com/8075494/32748459-519986e8-c88a-11e7-89b3-80dedf7f261b.png\" width=400>OnlineStats integration is available via the reduce and groupreduce functions.  An OnlineStat acts differently from a normal reducer:Normal reducer f:  val = f(val, row)\nOnlineStat reducer o: fit!(o, row)using JuliaDB, OnlineStats\nt = table(1:100, rand(Bool, 100), randn(100));\nreduce(Mean(), t; select = 3)\ngrp = groupreduce(Mean(), t, 2; select=3)\nselect(grp, (1, 2 => value))note: Note\nThe OnlineStats.value function extracts the value of the statistic.  E.g. value(Mean())."
+},
+
+{
+    "location": "onlinestats/#Calculating-Statistics-on-Multiple-Columns.-1",
+    "page": "OnlineStats Integration",
+    "title": "Calculating Statistics on Multiple Columns.",
+    "category": "section",
+    "text": "The OnlineStats.Group type is used for calculating statistics on multiple data streams.  A Group that computes the same OnlineStat can be created through integer multiplication:reduce(3Mean(), t)Alternatively, a Group can be created by providing a collection of OnlineStats.reduce(Group(Extrema(Int), CountMap(Bool), Mean()), t)"
 },
 
 {
