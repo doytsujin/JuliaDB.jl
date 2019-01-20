@@ -4,11 +4,11 @@
 julia&gt; t = table(1:100, rand(Bool, 100), randn(100));
 
 julia&gt; reduce(Mean(), t; select = 3)
-Mean: n=100 | value=-0.0278479
+Mean: n=100 | value=-0.0367659
 
 julia&gt; groupreduce(Mean(), t, 2; select=3)
 Table with 2 rows, 2 columns:
 1      2
-────────────────────────────────────
-false  Mean: n=50 | value=-0.0639895
-true   Mean: n=50 | value=0.00829367</code></pre><footer><hr/><a class="previous" href="../basics/"><span class="direction">Previous</span><span class="title">Basics</span></a><a class="next" href="../plotting/"><span class="direction">Next</span><span class="title">Plotting</span></a></footer></article></body></html>
+───────────────────────────────────
+false  Mean: n=45 | value=-0.101792
+true   Mean: n=55 | value=0.0164372</code></pre><footer><hr/><a class="previous" href="../basics/"><span class="direction">Previous</span><span class="title">Basics</span></a><a class="next" href="../plotting/"><span class="direction">Next</span><span class="title">Plotting</span></a></footer></article></body></html>

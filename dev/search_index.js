@@ -397,7 +397,7 @@ var documenterSearchIndex = {"docs": [
     "page": "-",
     "title": "Dagger.load",
     "category": "method",
-    "text": "load(dir::AbstractString; tomemory)\n\nLoad a saved DNDSparse from dir directory. Data can be saved using the save function.\n\n\n\n\n\n"
+    "text": "load(dir::AbstractString)\n\nLoad a saved DNDSparse from dir directory. Data can be saved using the save function.\n\n\n\n\n\n"
 },
 
 {
