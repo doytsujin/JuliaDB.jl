@@ -5,7 +5,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Overview",
     "title": "Overview",
     "category": "page",
-    "text": ""
+    "text": "<center>\n<img src=\"https://user-images.githubusercontent.com/25916/36773410-843e61b0-1c7f-11e8-818b-3edb08da8f41.png\" width=200>\n</center>"
 },
 
 {
@@ -257,6 +257,30 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "joins/#",
+    "page": "Joining Tables",
+    "title": "Joining Tables",
+    "category": "page",
+    "text": "using JuliaDB"
+},
+
+{
+    "location": "joins/#Joining-Tables-1",
+    "page": "Joining Tables",
+    "title": "Joining Tables",
+    "category": "section",
+    "text": "Table joins are accomplished through the join function.  "
+},
+
+{
+    "location": "joins/#Appending-Tables-with-the-Same-Columns-1",
+    "page": "Joining Tables",
+    "title": "Appending Tables with the Same Columns",
+    "category": "section",
+    "text": "The merge function will combine tables while maintaining the sorting of the  primary key(s).t1 = table(1:5, rand(5); pkey=1)\nt2 = table(6:10, rand(5); pkey=1)\nmerge(t1, t2)"
+},
+
+{
     "location": "onlinestats/#",
     "page": "OnlineStats Integration",
     "title": "OnlineStats Integration",
@@ -333,7 +357,23 @@ var documenterSearchIndex = {"docs": [
     "page": "Plotting",
     "title": "Histograms",
     "category": "section",
-    "text": "grp = groupreduce(Hist(-5.1:5), t, :z, select = :x)\nplot(plot.(select(grp, 2))...)"
+    "text": "grp = groupreduce(Hist(-5:.5:5), t, :z, select = :x)\nplot(plot.(select(grp, 2))...; link=:all)\npng(\"hist.png\"); nothing # hide(Image: )grp = groupreduce(KHist(20), t, :z, select = :x)\nplot(plot.(select(grp, 2))...; link = :all)\npng(\"hist2.png\"); nothing # hide(Image: )"
+},
+
+{
+    "location": "plotting/#Partition-and-IndexedPartition-1",
+    "page": "Plotting",
+    "title": "Partition and IndexedPartition",
+    "category": "section",
+    "text": "Partition(stat, n) summarizes a univariate data stream.\nThe stat is fitted over n approximately equal-sized pieces.\nIndexedPartition(T, stat, n) summarizes a bivariate data stream.\nThe stat is fitted over n pieces covering the domain of another variable of type T.o = reduce(Partition(KHist(10), 50), t; select=:y)\nplot(o)\npng(\"partition.png\"); nothing # hide(Image: )o = reduce(IndexedPartition(Float64, KHist(10), 50), t; select=(:x, :y))\nplot(o)\npng(\"partition2.png\"); nothing # hide(Image: )"
+},
+
+{
+    "location": "plotting/#GroupBy-1",
+    "page": "Plotting",
+    "title": "GroupBy",
+    "category": "section",
+    "text": "o = reduce(GroupBy{Bool}(KHist(20)), t; select = (:z, :x))\nplot(o)\npng(\"groupby.png\"); nothing # hide(Image: )"
 },
 
 {
@@ -349,7 +389,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Missing Values",
     "title": "Missing Values",
     "category": "page",
-    "text": ""
+    "text": "using JuliaDB"
 },
 
 {
@@ -357,15 +397,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Missing Values",
     "title": "Missing Values",
     "category": "section",
-    "text": "Julia has several different ways of representing missing data.  If a column of data may contain missing values, JuliaDB supports both missing value representations of Union{T, Missing} and DataValue{T}.While Union{T, Missing} is the default representation, functions that generate missing values (join) have a missingtype = Missing keyword argument that can be set to DataValue.See the convertmissing function for switching from Missing to DataValue or vice versa.\nThe dropmissing function will remove rows that contain Missing or missing DataValues."
-},
-
-{
-    "location": "missing_values/#Differences-between-Union{T,-Missing}-and-DataValue{T}-1",
-    "page": "Missing Values",
-    "title": "Differences between Union{T, Missing} and DataValue{T}",
-    "category": "section",
-    "text": "The differences between missing value types are best seen through example.  Here we will create vectors that are identical apart from how missing values are represented.using DataValues\n\nmask = [rand(Bool) for i in 1:1000]\ndata = randn(1000)\n\nx = [mask[i] ? missing : data[i] for i in 1:1000]\ny = DataValueArray(data, mask);"
+    "text": "Julia has several different ways of representing missing data.  If a column of data may contain missing values, JuliaDB supports both missing value representations of Union{T, Missing} and DataValue{T}.While Union{T, Missing} is the default representation, functions that generate missing values (join) have a missingtype = Missing keyword argument that can be set to DataValue.See the convertmissing function for switching from Missing to DataValue or vice versa.using DataValues\nconvertmissing(table([1, NA]), Missing)\nconvertmissing(table([1, missing]), DataValue)The dropmissing function will remove rows that contain Missing or missing DataValues.dropmissing(table([1, NA]))\ndropmissing(table([1, missing]))"
 },
 
 {
