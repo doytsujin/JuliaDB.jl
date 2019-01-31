@@ -53,7 +53,15 @@ var documenterSearchIndex = {"docs": [
     "page": "Basics",
     "title": "Basics",
     "category": "section",
-    "text": "JuliaDB offers two main data structures as well as distributed counterparts.  This allows you to easily scale up an analysis, as operations that work on non-distributed tables  either work out of the box or are easy to transition for distributed tables.Here is a high level overview of tables in JuliaDB:Tables store data in columns.\nTables are typed.\nChanging a table in some way therefore requires returning a new table (underlying data is not copied).\nJuliaDB has few mutating operations because a new table is necessary in most cases.x = 1:10\ny = vcat(fill(\'a\', 4), fill(\'b\', 6))\nz = randn(10)"
+    "text": "JuliaDB offers two main data structures as well as distributed counterparts.  This allows you to easily scale up an analysis, as operations that work on non-distributed tables  either work out of the box or are easy to transition for distributed tables.Here is a high level overview of tables in JuliaDB:Tables store data in columns.\nTables are typed.\nChanging a table in some way therefore requires returning a new table (underlying data is not copied).\nJuliaDB has few mutating operations because a new table is necessary in most cases."
+},
+
+{
+    "location": "basics/#Data-for-examples:-1",
+    "page": "Basics",
+    "title": "Data for examples:",
+    "category": "section",
+    "text": "x = 1:10\ny = vcat(fill(\'a\', 4), fill(\'b\', 6))\nz = randn(10);"
 },
 
 {
@@ -137,6 +145,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "operations/#Column-Operations-1",
+    "page": "Table Operations",
+    "title": "Column Operations",
+    "category": "section",
+    "text": "setcol\npushcol\npopcol\ninsertcol\ninsertcolafter\ninsertcolbefore\nrenamecol"
+},
+
+{
     "location": "operations/#[filter](@ref)-1",
     "page": "Table Operations",
     "title": "filter",
@@ -194,23 +210,31 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "joins/#",
-    "page": "Joining Tables",
-    "title": "Joining Tables",
+    "page": "Joins",
+    "title": "Joins",
     "category": "page",
     "text": "using JuliaDB"
 },
 
 {
-    "location": "joins/#Joining-Tables-1",
-    "page": "Joining Tables",
-    "title": "Joining Tables",
+    "location": "joins/#Joins-1",
+    "page": "Joins",
+    "title": "Joins",
+    "category": "section",
+    "text": ""
+},
+
+{
+    "location": "joins/#Table-Joins-1",
+    "page": "Joins",
+    "title": "Table Joins",
     "category": "section",
     "text": "Table joins are accomplished through the join function.  "
 },
 
 {
     "location": "joins/#Appending-Tables-with-the-Same-Columns-1",
-    "page": "Joining Tables",
+    "page": "Joins",
     "title": "Appending Tables with the Same Columns",
     "category": "section",
     "text": "The merge function will combine tables while maintaining the sorting of the  primary key(s).t1 = table(1:5, rand(5); pkey=1)\nt2 = table(6:10, rand(5); pkey=1)\nmerge(t1, t2)"
