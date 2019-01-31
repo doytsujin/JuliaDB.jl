@@ -85,7 +85,55 @@ var documenterSearchIndex = {"docs": [
     "page": "Basics",
     "title": "Selectors",
     "category": "section",
-    "text": "JuliaDB has a variety of ways to select columns.  These selection methods get used across many JuliaDB\'s functions: select, reduce, groupreduce,  groupby, join, pushcol, reindex, and more.To demonstrate selection, we\'ll use the select function.  A selection can be any of the following types:Integer – returns the column at this position.\nSymbol – returns the column with this name.\nPair{Selection => Function} – selects and maps a function over the selection, returns the result.\nAbstractArray – returns the array itself. This must be the same length as the table.\nTuple of Selection – returns a table containing a column for every selector in the tuple.\nRegex – returns the columns with names that match the regular expression.\nType – returns columns with elements of the given type.\nNot(Selection) – returns columns that are not included in the selection.\nBetween(first, last) – returns columns between first and last.\nKeys() – return the primary key columns.t = table(1:10, randn(10), rand(Bool, 10); names = [:x, :y, :z])# select the :x vector\nselect(t, 1)\nselect(t, :x)# map a function to the :y vector\nselect(t, 2 => abs)\nselect(t, :y => x -> x > 0 ? x : -x)# select the table of :x and :z\nselect(t, (:x, :z))\nselect(t, r\"(x|z)\")# map a function to the table of :x and :y\nselect(t, (:x, :y) => row -> row[1] + row[2])\nselect(t, (1, :y) => row -> row.x + row.y)# select columns that are subtypes of Integer\nselect(t, Integer)# select columns that are not subtypes of Integer\nselect(t, Not(Integer))"
+    "text": "JuliaDB has a variety of ways to select columns.  These selection methods get used across many JuliaDB\'s functions: select, reduce, groupreduce,  groupby, join, pushcol, reindex, and more.To demonstrate selection, we\'ll use the select function.  A selection can be any of the following types:Integer – returns the column at this position.\nSymbol – returns the column with this name.\nPair{Selection => Function} – selects and maps a function over the selection, returns the result.\nAbstractArray – returns the array itself. This must be the same length as the table.\nTuple of Selection – returns a table containing a column for every selector in the tuple.\nRegex – returns the columns with names that match the regular expression.\nType – returns columns with elements of the given type.\nNot(Selection) – returns columns that are not included in the selection.\nBetween(first, last) – returns columns between first and last.\nKeys() – return the primary key columns.t = table(1:10, randn(10), rand(Bool, 10); names = [:x, :y, :z])"
+},
+
+{
+    "location": "basics/#select-the-:x-vector-1",
+    "page": "Basics",
+    "title": "select the :x vector",
+    "category": "section",
+    "text": "select(t, 1)\nselect(t, :x)"
+},
+
+{
+    "location": "basics/#map-a-function-to-the-:y-vector-1",
+    "page": "Basics",
+    "title": "map a function to the :y vector",
+    "category": "section",
+    "text": "select(t, 2 => abs)\nselect(t, :y => x -> x > 0 ? x : -x)"
+},
+
+{
+    "location": "basics/#select-the-table-of-:x-and-:z-1",
+    "page": "Basics",
+    "title": "select the table of :x and :z",
+    "category": "section",
+    "text": "select(t, (:x, :z))\nselect(t, r\"(x|z)\")"
+},
+
+{
+    "location": "basics/#map-a-function-to-the-table-of-:x-and-:y-1",
+    "page": "Basics",
+    "title": "map a function to the table of :x and :y",
+    "category": "section",
+    "text": "select(t, (:x, :y) => row -> row[1] + row[2])\nselect(t, (1, :y) => row -> row.x + row.y)"
+},
+
+{
+    "location": "basics/#select-columns-that-are-subtypes-of-Integer-1",
+    "page": "Basics",
+    "title": "select columns that are subtypes of Integer",
+    "category": "section",
+    "text": "select(t, Integer)"
+},
+
+{
+    "location": "basics/#select-columns-that-are-not-subtypes-of-Integer-1",
+    "page": "Basics",
+    "title": "select columns that are not subtypes of Integer",
+    "category": "section",
+    "text": "select(t, Not(Integer))"
 },
 
 {
